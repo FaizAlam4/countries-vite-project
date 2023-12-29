@@ -1,0 +1,37 @@
+
+.card-container-item {
+
+    background-color: white;
+    border-radius: 10px;
+    width: 340px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.card-container-item .card-container-item-1 img {
+
+    width: 340px;
+    margin: auto;
+    height: 190px;
+    object-fit: cover;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 10px 10px 0vh 0vh;
+
+}
+
+.card-container-item-2 {
+    padding: 4vh 20px;
+    line-height: 2;
+
+}
+
+.list-wrapper {
+    list-style: none;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+b {
+    font-weight: 600;
+    color: rgb(66, 65, 65);
+}
+
