@@ -11,6 +11,7 @@ function App() {
   let [data, setData] = useState([]);
   var arr = [];
   let [filterRegion, setFilterRegion] = useState("all");
+  let [subRegion, setSubRegion] = useState("all");
   let [load, setLoad] = useState(true);
   let [myerror, setError] = useState(null);
   let [inputValue, setInputValue] = useState("");
@@ -31,23 +32,55 @@ function App() {
   }, []);
 
   let ans = data.filter((country) => {
-    if (
-      country.name.common.toLowerCase().includes(inputValue) &&
-      country.region == filterRegion
-    )
-      return true;
-    else if (filterRegion == "all") {
+    if (subRegion != "all" && filterRegion != "all") {
+      if (
+        country.name.common.toLowerCase().includes(inputValue) &&
+        country.region == filterRegion &&
+        country.subregion == subRegion
+      ) {
+        return true;
+      }
+    } else if (filterRegion == "all" && subRegion != "all") {
+      return (
+        country.name.common.toLowerCase().includes(inputValue) &&
+        country.subregion == subRegion
+      );
+    } else if (filterRegion != "all" && subRegion == "all") {
+      return (
+        country.name.common.toLowerCase().includes(inputValue) &&
+        country.region == filterRegion
+      );
+    } else {
       return country.name.common.toLowerCase().includes(inputValue);
     }
   });
-  console.log(ans.length == 250);
-  // setNotFound(ans.length==0)
+
+  let arr1 = [];
+  data.forEach((ele) => {
+    if (filterRegion == "all") {
+      if (!arr1.includes(ele.subregion)) {
+        arr1.push(ele.subregion);
+      }
+    } else if (filterRegion != "all") {
+      if (ele.region == filterRegion && !arr1.includes(ele.subregion)) {
+        arr1.push(ele.subregion);
+      }
+    }
+  });
 
   let handleFilter = (e) => {
     if (e.target.id == "filter-region") {
       let filtered = e.target.value;
       console.log(filtered);
       setFilterRegion(filtered);
+      setSubRegion("all");
+    }
+  };
+
+  let handleSubFilter = (e) => {
+    if (e.target.id == "filter-subregion") {
+      let subFiltered = e.target.value;
+      setSubRegion(subFiltered);
     }
   };
 
@@ -118,6 +151,31 @@ function App() {
                 );
               }
             })}
+          </select>
+        </div>
+
+        <div className="input-filter-item" >
+          <select name="my-subregion" value={subRegion} onChange={handleSubFilter} id="filter-subregion">
+            <option value="all" key="">
+              Filter by Subregion
+            </option>
+            {arr1.map((subregion, index) => {
+              return (
+                <option value={subregion} key={index}>
+                  {subregion}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+
+        <div className="input-filter-item">
+          <select name="filter by" id="">
+            <option value="">Filter by</option>
+            <option value="">Sort by population(ascending)</option>
+            <option value="">Sort by population(descending)</option>
+            <option value="">Sort by area(ascending)</option>
+            <option value="">Sort by area(descending)</option>
           </select>
         </div>
       </div>
