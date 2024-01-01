@@ -11,20 +11,20 @@
 .outermost {
     background-color: hsl(0, 0%, 98%);
     min-height: 100vh;
-    margin-top: -10px;
+    margin-top: -6.2vh
 }
 
 
 
 .input-filter {
-    width: 93%;
+    width: 96%;
     margin: auto;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
     padding-top: 20px;
-
+    margin-top: 50px;
     /* gap: 140px */
 
 }
@@ -109,9 +109,9 @@ select {
 .card-container {
     display: flex;
     flex-flow: row wrap;
-    width: 100%;
+    width: 97%;
     justify-content: space-around;
     align-items: center;
     margin: 7vh auto;
-    gap: 7vh;
+    gap: 4vh;
 }

@@ -3,13 +3,13 @@
 
     background-color: white;
     border-radius: 10px;
-    width: 340px;
+    width: 300px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .card-container-item .card-container-item-1 img {
 
-    width: 340px;
+    width: 300px;
     margin: auto;
     height: 190px;
     object-fit: cover;
