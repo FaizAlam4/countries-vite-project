@@ -1,17 +1,18 @@
 import "./App.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Card from "./Card";
-import Navigation from "./Navigation";
+import Card from "./Component/Card";
+import Navigation from "./Component/Navigation";
 
 // export const ThemeContext=React.createContext();
 
 function App() {
   // let [darkMode, setDarkMode] = useState(true);
-  let [data, setData] = useState([]);
   var arr = [];
+  let [data, setData] = useState([]);
   let [filterRegion, setFilterRegion] = useState("all");
   let [subRegion, setSubRegion] = useState("all");
+  let [filterBy, setFilterBy] = useState("all");
   let [load, setLoad] = useState(true);
   let [myerror, setError] = useState(null);
   let [inputValue, setInputValue] = useState("");
@@ -23,6 +24,7 @@ function App() {
       .then((res) => res.data)
       .then((data) => {
         setData(data);
+        console.log(data);
         setLoad(false);
       })
       .catch(() => {
@@ -54,6 +56,26 @@ function App() {
       return country.name.common.toLowerCase().includes(inputValue);
     }
   });
+
+  if (filterBy == "asc") {
+    ans.sort((country1, country2) => {
+      return country1.population - country2.population;
+    });
+  } else if (filterBy == "dsc") {
+    ans.sort((country1, country2) => {
+      return country2.population - country1.population;
+    });
+  } else if (filterBy == "asca") {
+    ans.sort((country1, country2) => {
+      return country1.area - country2.area;
+    });
+  } else if (filterBy == "dsca") {
+    ans.sort((country1, country2) => {
+      return country2.area - country1.area;
+    });
+  }
+
+  //setting subregions menu
 
   let arr1 = [];
   data.forEach((ele) => {
@@ -89,6 +111,7 @@ function App() {
     console.log(enteredValue);
     setInputValue(enteredValue);
   };
+
   if (load && myerror == null) {
     return (
       <div
@@ -154,8 +177,13 @@ function App() {
           </select>
         </div>
 
-        <div className="input-filter-item" >
-          <select name="my-subregion" value={subRegion} onChange={handleSubFilter} id="filter-subregion">
+        <div className="input-filter-item">
+          <select
+            name="my-subregion"
+            value={subRegion}
+            onChange={handleSubFilter}
+            id="filter-subregion"
+          >
             <option value="all" key="">
               Filter by Subregion
             </option>
@@ -170,12 +198,19 @@ function App() {
         </div>
 
         <div className="input-filter-item">
-          <select name="filter by" id="">
-            <option value="">Filter by</option>
-            <option value="">Sort by population(ascending)</option>
-            <option value="">Sort by population(descending)</option>
-            <option value="">Sort by area(ascending)</option>
-            <option value="">Sort by area(descending)</option>
+          <select
+            name="filter by"
+            id=""
+            onChange={(e) => {
+              setFilterBy(e.target.value);
+              console.log(e.target.value);
+            }}
+          >
+            <option value="all">Filter by</option>
+            <option value="asc">Sort by population(ascending)</option>
+            <option value="dsc">Sort by population(descending)</option>
+            <option value="asca">Sort by area(ascending)</option>
+            <option value="dsca">Sort by area(descending)</option>
           </select>
         </div>
       </div>
