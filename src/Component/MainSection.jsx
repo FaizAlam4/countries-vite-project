@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useState, useEffect, useContext} from "react";
-import Card from "./Card";
+import { useState, useEffect, useContext } from "react";
 import "./MainSection.css";
 import DarkContext from "../Context/DarkContext";
+import Container from "./Container.jsx";
 
 function MainSection() {
   var arr = [];
@@ -14,26 +14,28 @@ function MainSection() {
   let [myerror, setError] = useState(null);
   let [inputValue, setInputValue] = useState("");
 
- 
-  const {theme}=useContext(DarkContext)
+  const { theme } = useContext(DarkContext);
 
-  let elements= document.querySelectorAll('.input-filter-item');
+  let elements = document.querySelectorAll(".input-filter-item");
 
+  // some of the effects for dark mode written separately
 
-  theme!='light'?( elements.forEach((ele)=>{
-ele.style.cssText=`background-color:rgb(43, 57, 69); color:white`
-  })
-  ): elements.forEach((ele)=>{
-    ele.style.cssText=`background-color:white; color:black`
-  })
+  theme != "light"
+    ? elements.forEach((ele) => {
+        ele.style.cssText = `background-color:rgb(43, 57, 69); color:white`;
+      })
+    : elements.forEach((ele) => {
+        ele.style.cssText = `background-color:white; color:black`;
+      });
 
-  let elements1= document.querySelectorAll('select');
-  theme!='light'?( elements1.forEach((ele)=>{
-ele.style.cssText=`background-color:rgb(43, 57, 69); color:white`
-  })
-  ): elements1.forEach((ele)=>{
-    ele.style.cssText=`background-color:white; color:black`
-  })
+  let elements1 = document.querySelectorAll("select");
+  theme != "light"
+    ? elements1.forEach((ele) => {
+        ele.style.cssText = `background-color:rgb(43, 57, 69); color:white`;
+      })
+    : elements1.forEach((ele) => {
+        ele.style.cssText = `background-color:white; color:black`;
+      });
 
   useEffect(() => {
     setLoad(true);
@@ -51,8 +53,7 @@ ele.style.cssText=`background-color:rgb(43, 57, 69); color:white`
       });
   }, []);
 
-
-  let ans = data.filter((country) => {
+  var ans = data.filter((country) => {
     if (subRegion != "all" && filterRegion != "all") {
       if (
         country.name.common.toLowerCase().includes(inputValue) &&
@@ -75,6 +76,7 @@ ele.style.cssText=`background-color:rgb(43, 57, 69); color:white`
       return country.name.common.toLowerCase().includes(inputValue);
     }
   });
+
 
   if (filterBy == "asc") {
     ans.sort((country1, country2) => {
@@ -169,7 +171,8 @@ ele.style.cssText=`background-color:rgb(43, 57, 69); color:white`
           <label htmlFor="filter-icon">
             <i className="fa-solid fa-magnifying-glass"></i>
           </label>
-          <input className={`${theme}-input`}
+          <input
+            className={`${theme}-input`}
             id="filter-icon"
             placeholder="Search for a country"
             type="text"
@@ -230,28 +233,9 @@ ele.style.cssText=`background-color:rgb(43, 57, 69); color:white`
           </select>
         </div>
       </div>
-
-      <section>
-        {ans.length == 0 ? (
-          <div className={`${theme}-not-found`}
-            style={{
-              fontSize: "4rem",
-              width: "80%",
-              margin: "auto",
-              marginTop: "40px",
-              textAlign: "center",
-            }}
-          >
-            Countries not found
-          </div>
-        ) : (
-          <div className="card-container">
-            {ans.map((ele, index) => {
-              return <Card country={ele} key={index} />;
-            })}
-          </div>
-        )}
-      </section>
+     
+     <Container myData={ans}/>
+     
     </div>
   );
 }

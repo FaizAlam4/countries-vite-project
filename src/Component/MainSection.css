@@ -106,23 +106,11 @@ select {
     outline: none;
 }
 
-.card-container {
-    display: flex;
-    flex-flow: row wrap;
-    width: 97%;
-    justify-content: space-around;
-    align-items: center;
-    margin: 7vh auto;
-    gap: 4vh;
-}
 
 .dark-main{
     background-color: hsl(207, 26%, 17%);
 }
 
 .dark-input{
-    color: white;
-}
-.dark-not-found{
     color: white;
 }
