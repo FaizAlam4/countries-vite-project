@@ -16,8 +16,11 @@ function App() {
  
   return (
     <DarkContext.Provider value={{theme,toggleMode}}>
+      <div className='app-wrap'>
       <Navigation />
       <MainSection />
+
+      </div>
     </DarkContext.Provider>
   );
 }

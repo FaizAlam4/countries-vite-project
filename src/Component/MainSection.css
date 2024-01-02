@@ -11,7 +11,8 @@
 .outermost {
     background-color: hsl(0, 0%, 98%);
     min-height: 100vh;
-    margin-top: -7.2vh
+    margin-top: -7.2vh;
+    padding-bottom: 3vh;
 }
 
 
