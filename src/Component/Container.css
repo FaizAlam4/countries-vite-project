@@ -1,0 +1,15 @@
+
+.card-container {
+    display: flex;
+    flex-flow: row wrap;
+    width: 97%;
+    justify-content: space-around;
+    align-items: center;
+    margin: 7vh auto;
+    gap: 4vh;
+     
+}
+
+.dark-not-found{
+    color: white;
+}
