@@ -11,7 +11,7 @@
 .outermost {
     background-color: hsl(0, 0%, 98%);
     min-height: 100vh;
-    margin-top: -6.2vh
+    margin-top: -7.2vh
 }
 
 
@@ -114,4 +114,15 @@ select {
     align-items: center;
     margin: 7vh auto;
     gap: 4vh;
+}
+
+.dark-main{
+    background-color: hsl(207, 26%, 17%);
+}
+
+.dark-input{
+    color: white;
+}
+.dark-not-found{
+    color: white;
 }

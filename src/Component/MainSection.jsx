@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext} from "react";
 import Card from "./Card";
 import "./MainSection.css";
+import DarkContext from "../Context/DarkContext";
 
 function MainSection() {
   var arr = [];
@@ -12,6 +13,27 @@ function MainSection() {
   let [load, setLoad] = useState(true);
   let [myerror, setError] = useState(null);
   let [inputValue, setInputValue] = useState("");
+
+ 
+  const {theme}=useContext(DarkContext)
+
+  let elements= document.querySelectorAll('.input-filter-item');
+
+
+  theme!='light'?( elements.forEach((ele)=>{
+ele.style.cssText=`background-color:rgb(43, 57, 69); color:white`
+  })
+  ): elements.forEach((ele)=>{
+    ele.style.cssText=`background-color:white; color:black`
+  })
+
+  let elements1= document.querySelectorAll('select');
+  theme!='light'?( elements1.forEach((ele)=>{
+ele.style.cssText=`background-color:rgb(43, 57, 69); color:white`
+  })
+  ): elements1.forEach((ele)=>{
+    ele.style.cssText=`background-color:white; color:black`
+  })
 
   useEffect(() => {
     setLoad(true);
@@ -28,6 +50,7 @@ function MainSection() {
         setError("There is an error fetching the data..........");
       });
   }, []);
+
 
   let ans = data.filter((country) => {
     if (subRegion != "all" && filterRegion != "all") {
@@ -140,13 +163,13 @@ function MainSection() {
     );
   }
   return (
-    <div className="outermost">
+    <div className={`outermost ${theme}-main`}>
       <div className="input-filter">
         <div className="input-filter-item">
           <label htmlFor="filter-icon">
             <i className="fa-solid fa-magnifying-glass"></i>
           </label>
-          <input
+          <input className={`${theme}-input`}
             id="filter-icon"
             placeholder="Search for a country"
             type="text"
@@ -210,7 +233,7 @@ function MainSection() {
 
       <section>
         {ans.length == 0 ? (
-          <div
+          <div className={`${theme}-not-found`}
             style={{
               fontSize: "4rem",
               width: "80%",

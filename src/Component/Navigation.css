@@ -16,7 +16,7 @@ nav {
     gap: 20px;
     background-color: white;
     margin-bottom: 1rem;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     ;
   }
   
@@ -29,4 +29,9 @@ nav {
   .nav-item:nth-child(2) {
     margin-right: 3vw;
   
+  }
+
+  .dark{
+    background-color: rgb(43, 57, 69);
+    color: white;
   }

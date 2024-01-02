@@ -17,7 +17,9 @@
     border-radius: 10px 10px 0vh 0vh;
 
 }
-
+.card-container-item-1{
+    height: 190px;
+}
 .card-container-item-2 {
     padding: 4vh 20px;
     line-height: 2;
@@ -35,3 +37,8 @@ b {
     color: rgb(66, 65, 65);
 }
 
+
+.dark-card{
+    background-color: rgb(43, 57, 69);
+    color: white;
+}
