@@ -13,10 +13,11 @@ box-sizing: bo;
 
     font-size: 1.2rem;
     margin-top: -60px;
+    box-shadow: 0px -2px 5px rgba(240, 238, 238, 0.278);
     padding-top: 70px;
     outline: none;
     color: initial;
-    width: 100vw;
+    width: 100%;
     background-color: white;
     min-height: 100vh;
 
@@ -39,10 +40,10 @@ box-sizing: bo;
 
 .card-container-item-detail-info:nth-child(1) img {
 
-    width: 550px;
+    max-width: 500px;
     margin: auto;
     height: 360px;
-    object-fit: cover;
+    /* object-fit: cover; */
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
 
@@ -108,6 +109,7 @@ box-sizing: bo;
  border-radius: 5px;
  background-color: white;
  margin-left: 40px;
+ 
 }
 
 .dark-btn{
@@ -142,9 +144,9 @@ box-sizing: bo;
         padding-top: 10px;
     }
     .card-container-item-detail-info:nth-child(1) img {
-        max-width: 400px;
+       width: 100%;
         margin: auto;
-        height: 360px;
+        height: 250px;
     }
 }
 

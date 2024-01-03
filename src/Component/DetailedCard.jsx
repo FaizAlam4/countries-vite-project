@@ -20,7 +20,7 @@ console.log(props.country)
           <i
             style={{ paddingRight: "5px" }}
             className="fa-solid fa-left-long"
-          ></i>{" "}
+          ></i>
           Back
         </button>
       </Link>
