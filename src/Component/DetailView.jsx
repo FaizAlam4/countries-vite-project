@@ -5,6 +5,7 @@ import DetailedCard from "./DetailedCard";
 
 function DetailView() {
   const [detailData, setDetailData] = useState([]);
+  const [cardLoad, setCardLoad] = useState(true);
   useEffect(() => {
     axios
       .get("https://restcountries.com/v3.1/all")
@@ -13,7 +14,7 @@ function DetailView() {
       })
       .then((result) => {
         // console.log(result,"faiz")
-
+        setCardLoad(false);
         setDetailData(result);
       });
   }, []);
@@ -23,11 +24,15 @@ function DetailView() {
 
   return (
     <div>
-      {detailData.map((country, index) => {
-        if (country.cca3 == id) {
-          return <DetailedCard country={country} key={index} />;
-        }
-      })}
+      {cardLoad ? (
+        <div style={{ textAlign: "center", fontSize: "2rem" }}>Loading...</div>
+      ) : (
+        detailData.map((country, index) => {
+          if (country.cca3 == id) {
+            return <DetailedCard country={country} key={index} />;
+          }
+        })
+      )}
     </div>
   );
 }
