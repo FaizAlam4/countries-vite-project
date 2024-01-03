@@ -12,7 +12,7 @@ box-sizing: bo;
     grid-template-columns: 1fr 1fr 1fr;
 
     font-size: 1.2rem;
-    margin-top: -3.7%;
+    margin-top: -60px;
     padding-top: 70px;
     outline: none;
     color: initial;
@@ -86,9 +86,14 @@ box-sizing: bo;
     color: rgb(66, 65, 65);
 }
 
-
+.dark-bold{
+    color: white;
+    font-weight: 600;
+    font-size: 4rem;
+  
+}
 .dark-card-detail {
-    background-color: rgb(43, 57, 69);
+    background-color: hsl(207, 26%, 17%);
     color: white;
 }
 
@@ -105,6 +110,11 @@ box-sizing: bo;
  margin-left: 40px;
 }
 
+.dark-btn{
+    background-color: rgb(43, 57, 69);
+    color: white;
+    box-shadow: (99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
 .detail-itm{
     display: flex;
     /* width: 50%; */
