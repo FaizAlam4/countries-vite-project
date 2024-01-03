@@ -2,11 +2,13 @@
 import { useContext } from "react";
 import "./Card.css";
 import DarkContext from "../Context/DarkContext";
+import { Link } from "react-router-dom";
 
 function Card(props) {
   const {theme}=useContext(DarkContext)
 
   return (
+    <Link to={`/${props.country.ccn3}`}>
     <div className="card-container-item">
       <div className="card-container-item-1">
         <img src={props.country.flags.png} alt="" />
@@ -17,7 +19,7 @@ function Card(props) {
         <ul className="list-wrapper">
           <li className="list-item">
             {" "}
-            <b className={`${theme}-card`}>population: </b> {props.country.population}
+            <b className={`${theme}-card`}>Population: </b> {props.country.population}
           </li>
           <li className="list-item">
             <b className={`${theme}-card`}>Region: </b>
@@ -30,6 +32,7 @@ function Card(props) {
         </ul>
       </div>
     </div>
+    </Link>
   );
 }
 
