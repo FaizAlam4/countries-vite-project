@@ -8,7 +8,7 @@ function Card(props) {
   const {theme}=useContext(DarkContext)
 
   return (
-    <Link to={`/${props.country.ccn3}`}>
+    <Link to={`/${props.country.cca3}`}>
     <div className="card-container-item">
       <div className="card-container-item-1">
         <img src={props.country.flags.png} alt="" />

@@ -18,11 +18,12 @@ setDetailData(result)
 
 
     const {id}=useParams();
+    // console.log(typeof id)
 
 
   return (
     <div>{detailData.map((country,index)=>{
-      if(country.ccn3===id){
+      if(country.cca3==id){
     return (<DetailedCard country={country} key={index}/>)
       }  
     })}</div>

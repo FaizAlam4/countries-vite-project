@@ -7,22 +7,35 @@ import "./DetailedCard.css";
 function DetailedCard(props) {
   const { theme } = useContext(DarkContext);
 
+
   return (
     <>
       <Link to={`/`}>
-        <button>back</button>
+        <button className="btn-back">
+          <i
+            style={{ paddingRight: "5px" }}
+            className="fa-solid fa-left-long"
+          ></i>{" "}
+          Back
+        </button>
       </Link>
       <div className={`card-container-item-detail ${theme}-card-detail`}>
         <div className="card-container-item-detail-info">
           <img src={props.country.flags.png} alt="" />
+          {/* {console.log(props.country.flags.png)} */}
         </div>
 
-        <div className={`card-container-item-detail-info ${theme}-card-detail`}>
+        <div className={`card-container-item-detail-info `}>
           <h3 className="list-item-title">{props.country.name.common}</h3>
 
           <ul className="list-wrapper-detail">
             <li className="list-item-detail">
-              <b>Native Name: </b> {props.country.name.nativeName[Object.keys(props.country.name.nativeName)[0]].official}
+              <b>Native Name: </b>{" "}
+              {
+                props.country.name.nativeName[
+                  Object.keys(props.country.name.nativeName)[0]
+                ].official
+              }
             </li>
             <li className="list-item-detail">
               <b>Population: </b> {props.country.population.toLocaleString()}
@@ -42,7 +55,7 @@ function DetailedCard(props) {
           </ul>
         </div>
 
-        <div className={`card-container-item-detail-info ${theme}-card`}>
+        <div className={`card-container-item-detail-info`}>
           <ul className="list-wrapper-detail">
             <li className="list-item-detail">
               <b>Top Level Domain: </b>
@@ -50,8 +63,10 @@ function DetailedCard(props) {
             </li>
             <li className="list-item-detail">
               <b>Currencies: </b>
-              {Object.keys(props.country.currencies).map(
-                (ele) => props.country.currencies[ele]["name"]
+              {
+                Object.keys(props.country.currencies).map(
+                  (ele) => props.country.currencies[ele]["name"]
+                
               )}
             </li>
             <li className="list-item-detail">
@@ -61,6 +76,21 @@ function DetailedCard(props) {
               )}
             </li>
           </ul>
+        </div>
+
+        <div className="card-container-item-detail-info">
+          <div className="detail-itm">
+            <div className="detail-itm-in-1">
+              <b>Border Countries:</b>
+            </div>
+            {props.country.borders.map((country, index) => {
+              return (
+                <div key={index} className={`detail-itm-in`}>
+                  {country}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </>
