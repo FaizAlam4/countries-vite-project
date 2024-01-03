@@ -23,7 +23,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainSection />} />
             <Route path="/:id" element={<DetailView />} />
-            <Route path="/*" element={<Navigate to="/not-found" />} />
+            <Route path="*" element={<Navigate to="/not-found" />} />
           <Route path="/not-found" element={<NotFound />} />
           </Routes>
         </div>

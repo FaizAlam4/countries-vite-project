@@ -20,6 +20,7 @@ function DetailView() {
   }, []);
 
   const { id } = useParams();
+  var flag1=false
   // console.log(typeof id)
 
   return (
@@ -29,10 +30,14 @@ function DetailView() {
       ) : (
         detailData.map((country, index) => {
           if (country.cca3 == id) {
+            flag1=true;
             return <DetailedCard country={country} key={index} />;
           }
+          return null;
         })
-      )}
+      )
+    }
+   { flag1?null:<div style={{ textAlign: "center", fontSize: "2rem", "marginTop":"10%" }}>Page not found..</div>}
     </div>
   );
 }
