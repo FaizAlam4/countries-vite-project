@@ -7,7 +7,7 @@ import "./DetailedCard.css";
 function DetailedCard(props) {
   const { theme } = useContext(DarkContext);
 
-
+console.log(props.country)
   return (
     <>
       <Link to={`/`}>
@@ -31,10 +31,10 @@ function DetailedCard(props) {
           <ul className="list-wrapper-detail">
             <li className="list-item-detail">
               <b>Native Name: </b>{" "}
-              {
+              {(props.country.name.nativeName)?
                 props.country.name.nativeName[
                   Object.keys(props.country.name.nativeName)[0]
-                ].official
+                ].official:"No native name available"
               }
             </li>
             <li className="list-item-detail">
@@ -50,7 +50,7 @@ function DetailedCard(props) {
             </li>
             <li className="list-item-detail">
               <b>Capital: </b>
-              {props.country.capital}
+              {(props.country.capital)? props.country.capital: "Region has no capital"}
             </li>
           </ul>
         </div>
@@ -63,19 +63,19 @@ function DetailedCard(props) {
             </li>
             <li className="list-item-detail">
               <b>Currencies: </b>
-              {
+              {(props.country.currencies)?
                 Object.keys(props.country.currencies).map(
                   (ele) =>{
                   return props.country.currencies[ele]["name"]
                   }    
                 
-              )}
+              ): <div>No currencies</div>}
             </li>
             <li className="list-item-detail">
               <b>Languages: </b>
-              {Object.keys(props.country.languages).map(
+              {(props.country.languages)?Object.keys(props.country.languages).map(
                 (ele) => props.country.languages[ele] + " "
-              )}
+              ):<div>No languages are spoken here</div>}
             </li>
           </ul>
         </div>
