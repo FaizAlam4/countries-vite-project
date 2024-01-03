@@ -1,6 +1,6 @@
 * {
     text-decoration: none;
-
+box-sizing: bo;
 }
 
 
@@ -16,6 +16,7 @@
     padding-top: 70px;
     outline: none;
     color: initial;
+    width: 100vw;
     background-color: white;
     min-height: 100vh;
 
@@ -121,10 +122,19 @@
     font-size: 0.9rem;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; ;
 }
-@media (max-width:800px) {
+@media (max-width:1000px) {
     .card-container-item-detail {
         display: flex;
         flex-flow: column nowrap;
+        justify-content: center;
+    }
+    .card-container-item-detail-info:nth-child(3) {
+        padding-top: 10px;
+    }
+    .card-container-item-detail-info:nth-child(1) img {
+        max-width: 400px;
+        margin: auto;
+        height: 360px;
     }
 }
 

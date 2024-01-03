@@ -22,7 +22,7 @@ function DetailedCard(props) {
       <div className={`card-container-item-detail ${theme}-card-detail`}>
         <div className="card-container-item-detail-info">
           <img src={props.country.flags.png} alt="" />
-          {/* {console.log(props.country.flags.png)} */}
+          {console.log(props.country.flags.png)}
         </div>
 
         <div className={`card-container-item-detail-info `}>
@@ -65,7 +65,9 @@ function DetailedCard(props) {
               <b>Currencies: </b>
               {
                 Object.keys(props.country.currencies).map(
-                  (ele) => props.country.currencies[ele]["name"]
+                  (ele) =>{
+                  return props.country.currencies[ele]["name"]
+                  }    
                 
               )}
             </li>
@@ -83,13 +85,13 @@ function DetailedCard(props) {
             <div className="detail-itm-in-1">
               <b>Border Countries:</b>
             </div>
-            {props.country.borders.map((country, index) => {
+            {(props.country.borders) ? props.country.borders.map((country, index) => {
               return (
                 <div key={index} className={`detail-itm-in`}>
                   {country}
                 </div>
               );
-            })}
+            }) : <div>No border available</div>}
           </div>
         </div>
       </div>
