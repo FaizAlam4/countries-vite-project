@@ -77,7 +77,6 @@ function MainSection() {
     }
   });
 
-
   if (filterBy == "asc") {
     ans.sort((country1, country2) => {
       return country1.population - country2.population;
@@ -137,10 +136,8 @@ function MainSection() {
     return (
       <div
         style={{
-          fontSize: "5rem",
-          width: "200px",
-          height: "200px",
-          margin: "auto",
+          fontSize: "3rem",
+          textAlign: "center",
           marginTop: "20%",
         }}
       >
@@ -233,9 +230,8 @@ function MainSection() {
           </select>
         </div>
       </div>
-     
-     <Container myData={ans}/>
-     
+
+      <Container myData={ans} />
     </div>
   );
 }
