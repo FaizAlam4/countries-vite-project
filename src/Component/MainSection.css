@@ -108,16 +108,16 @@ select {
 }
 
 
-.dark-main{
+.dark-main {
     background-color: hsl(207, 26%, 17%);
 }
 
-.dark-input{
+.dark-input {
     color: white;
 }
 
 @media (max-width:600px) {
-    .input-filter-item{
+    .input-filter-item {
         width: 100%;
     }
 }

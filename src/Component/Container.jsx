@@ -2,10 +2,9 @@
 import { useContext } from "react";
 import DarkContext from "../Context/DarkContext";
 import Card from "./Card";
-import './Container.css'
+import "./Container.css";
 
 function Container({ myData }) {
-
   let { theme } = useContext(DarkContext);
   return (
     <section>

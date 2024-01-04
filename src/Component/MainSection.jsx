@@ -181,14 +181,14 @@ function MainSection() {
           <select name="my-region" id="filter-region">
             <option value="all">Filter by Region</option>
             {data.map((country, index) => {
-              if (!arr.includes(country.region)) {
+              if (!arr.includes(country.region.trim())) {
                 arr.push(country.region);
                 return (
                   <option key={index} value={country.region}>
                     {country.region}
                   </option>
                 );
-              }
+              } else return null;
             })}
           </select>
         </div>

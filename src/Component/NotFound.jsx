@@ -1,9 +1,7 @@
-import './NotFound.css'
+import "./NotFound.css";
 
 function NotFound() {
-  return (
-    <div className='cont'>Page Not Found 404</div>
-  )
+  return <div className="cont">Page Not Found 404</div>;
 }
 
-export default NotFound
+export default NotFound;

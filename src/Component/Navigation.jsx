@@ -3,9 +3,8 @@ import "./Navigation.css";
 import DarkContext from "../Context/DarkContext";
 
 function Navigation() {
- 
-  const {theme,toggleMode}=useContext(DarkContext);
-  
+  const { theme, toggleMode } = useContext(DarkContext);
+
   return (
     <nav className={`${theme}`}>
       <div className="nav-item">Where in the world? </div>

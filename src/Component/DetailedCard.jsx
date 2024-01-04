@@ -6,17 +6,19 @@ import "./DetailedCard.css";
 
 function DetailedCard(props) {
   const { theme } = useContext(DarkContext);
-  theme==='dark'? document.querySelectorAll('b').forEach((tag)=>{
-    tag.style.color='white';
-  }): document.querySelectorAll('b').forEach((tag)=>{
-    tag.style.color="rgb(66, 65, 65)"
-  })
+  theme === "dark"
+    ? document.querySelectorAll("b").forEach((tag) => {
+        tag.style.color = "white";
+      })
+    : document.querySelectorAll("b").forEach((tag) => {
+        tag.style.color = "rgb(66, 65, 65)";
+      });
 
-console.log(props.country)
+  console.log(props.country);
   return (
     <>
       <Link to={`/`}>
-        <button className={`btn-back ${theme}-btn`} >
+        <button className={`btn-back ${theme}-btn`}>
           <i
             style={{ paddingRight: "5px" }}
             className="fa-solid fa-left-long"
@@ -36,14 +38,15 @@ console.log(props.country)
           <ul className="list-wrapper-detail">
             <li className="list-item-detail">
               <b className={`${theme}-bold`}>Native Name: </b>{" "}
-              {(props.country.name.nativeName)?
-                props.country.name.nativeName[
-                  Object.keys(props.country.name.nativeName)[0]
-                ].official:"No native name available"
-              }
+              {props.country.name.nativeName
+                ? props.country.name.nativeName[
+                    Object.keys(props.country.name.nativeName)[0]
+                  ].official
+                : "No native name available"}
             </li>
             <li className="list-item-detail">
-              <b className={`${theme}-bold`}>Population: </b> {props.country.population.toLocaleString()}
+              <b className={`${theme}-bold`}>Population: </b>{" "}
+              {props.country.population.toLocaleString()}
             </li>
             <li className="list-item-detail">
               <b className={`${theme}-bold`}>Region: </b>
@@ -55,7 +58,9 @@ console.log(props.country)
             </li>
             <li className="list-item-detail">
               <b className={`${theme}-bold`}>Capital: </b>
-              {(props.country.capital)? props.country.capital: "Region has no capital"}
+              {props.country.capital
+                ? props.country.capital
+                : "Region has no capital"}
             </li>
           </ul>
         </div>
@@ -68,19 +73,23 @@ console.log(props.country)
             </li>
             <li className="list-item-detail">
               <b>Currencies: </b>
-              {(props.country.currencies)?
-                Object.keys(props.country.currencies).map(
-                  (ele) =>{
-                  return props.country.currencies[ele]["name"]
-                  }    
-                
-              ): <div>No currencies</div>}
+              {props.country.currencies ? (
+                Object.keys(props.country.currencies).map((ele) => {
+                  return props.country.currencies[ele]["name"];
+                })
+              ) : (
+                <div>No currencies</div>
+              )}
             </li>
             <li className="list-item-detail">
               <b className={`${theme}-bold`}>Languages: </b>
-              {(props.country.languages)?Object.keys(props.country.languages).map(
-                (ele) => props.country.languages[ele] + " "
-              ):<div>No languages are spoken here</div>}
+              {props.country.languages ? (
+                Object.keys(props.country.languages).map(
+                  (ele) => props.country.languages[ele] + " "
+                )
+              ) : (
+                <div>No languages are spoken here</div>
+              )}
             </li>
           </ul>
         </div>
@@ -90,13 +99,17 @@ console.log(props.country)
             <div className="detail-itm-in-1">
               <b className={`${theme}-bold`}>Border Countries:</b>
             </div>
-            {(props.country.borders) ? props.country.borders.map((country, index) => {
-              return (
-                <div key={index} className={`detail-itm-in ${theme}-btn`}>
-                  {country}
-                </div>
-              );
-            }) : <div>No border available</div>}
+            {props.country.borders ? (
+              props.country.borders.map((country, index) => {
+                return (
+                  <div key={index} className={`detail-itm-in ${theme}-btn`}>
+                    {country}
+                  </div>
+                );
+              })
+            ) : (
+              <div>No border available</div>
+            )}
           </div>
         </div>
       </div>

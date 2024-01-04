@@ -4,7 +4,7 @@ import MainSection from "./Component/MainSection";
 import DarkContext, { themes } from "./Context/DarkContext.js";
 import DetailView from "./Component/DetailView.jsx";
 import NotFound from "./Component/NotFound.jsx";
-import { useState } from "react";
+import {  useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 function App() {

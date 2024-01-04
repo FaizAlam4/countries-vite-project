@@ -11,7 +11,7 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.card-container-item{
+.card-container-item {
     outline: none;
     color: initial;
 }
@@ -45,7 +45,7 @@
 
 b {
     font-weight: 600;
-    color: rgb(66, 65, 65);
+    /* color: rgb(66, 65, 65); */
 }
 
 
