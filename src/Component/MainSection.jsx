@@ -16,38 +16,49 @@ function MainSection() {
 
   const { theme } = useContext(DarkContext);
 
-  let elements = document.querySelectorAll(".input-filter-item");
+  // Dark mode styling effect
+  useEffect(() => {
+    // Use setTimeout to ensure DOM elements are rendered
+    const applyTheme = () => {
+      const elements = document.querySelectorAll(".input-filter-item");
+      const elements1 = document.querySelectorAll("select");
+      
+      if (theme !== "light") {
+        elements.forEach((ele) => {
+          ele.style.cssText = `background-color:rgb(43, 57, 69); color:white`;
+        });
+        elements1.forEach((ele) => {
+          ele.style.cssText = `background-color:rgb(43, 57, 69); color:white`;
+        });
+      } else {
+        elements.forEach((ele) => {
+          ele.style.cssText = `background-color:white; color:black`;
+        });
+        elements1.forEach((ele) => {
+          ele.style.cssText = `background-color:white; color:black`;
+        });
+      }
+    };
 
-  // some of the effects for dark mode written separately
-
-  theme != "light"
-    ? elements.forEach((ele) => {
-        ele.style.cssText = `background-color:rgb(43, 57, 69); color:white`;
-      })
-    : elements.forEach((ele) => {
-        ele.style.cssText = `background-color:white; color:black`;
-      });
-
-  let elements1 = document.querySelectorAll("select");
-  theme != "light"
-    ? elements1.forEach((ele) => {
-        ele.style.cssText = `background-color:rgb(43, 57, 69); color:white`;
-      })
-    : elements1.forEach((ele) => {
-        ele.style.cssText = `background-color:white; color:black`;
-      });
+    // Apply theme immediately and after a short delay to catch late-rendered elements
+    applyTheme();
+    const timeoutId = setTimeout(applyTheme, 100);
+    
+    return () => clearTimeout(timeoutId);
+  }, [theme, data]); // Re-run when theme changes OR when data loads
 
   useEffect(() => {
     setLoad(true);
     axios
-      .get("https://restcountries.com/v3.1/all")
+      .get("https://restcountries.com/v3.1/all?fields=name,cca3,flags,population,region,subregion,capital,area,currencies,borders")
       .then((res) => res.data)
       .then((data) => {
         setData(data);
-        console.log(data);
+        console.log("MainSection API Success:", data);
         setLoad(false);
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error("MainSection API Error:", error.response?.data || error.message);
         setLoad(false);
         setError("There is an error fetching the data..........");
       });

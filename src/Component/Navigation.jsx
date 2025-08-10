@@ -8,7 +8,7 @@ function Navigation() {
   return (
     <nav className={`${theme}`}>
       <div className="nav-item">Where in the world? </div>
-      <div className="nav-item" onClick={toggleMode}>
+      <div className="nav-item" onClick={toggleMode} style={{ cursor: 'pointer' }}>
         <i className="fa-regular fa-moon"></i> Dark Mode
       </div>
     </nav>

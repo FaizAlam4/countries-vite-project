@@ -18,7 +18,7 @@ function DetailedCard(props) {
   return (
     <>
       <Link to={`/`}>
-        <button className={`btn-back ${theme}-btn`}>
+        <button className={`btn-back ${theme}-btn`} style={{ cursor: 'pointer' }}>
           <i
             style={{ paddingRight: "5px" }}
             className="fa-solid fa-left-long"
@@ -67,10 +67,6 @@ function DetailedCard(props) {
 
         <div className={`card-container-item-detail-info`}>
           <ul className="list-wrapper-detail">
-            <li className="list-item-detail">
-              <b className={`${theme}-bold`}>Top Level Domain: </b>
-              {props.country.tld}
-            </li>
             <li className="list-item-detail">
               <b>Currencies: </b>
               {props.country.currencies ? (

@@ -7,15 +7,20 @@ function DetailView() {
   const [detailData, setDetailData] = useState([]);
   const [cardLoad, setCardLoad] = useState(true);
   useEffect(() => {
+    // Using exactly 10 fields (API maximum) that match DetailedCard requirements
     axios
-      .get("https://restcountries.com/v3.1/all")
+      .get("https://restcountries.com/v3.1/all?fields=name,cca3,flags,population,region,subregion,capital,currencies,languages,borders")
       .then((data) => {
         return data.data;
       })
       .then((result) => {
-        // console.log(result,"faiz")
+        console.log("API Success:", result);
         setCardLoad(false);
         setDetailData(result);
+      })
+      .catch((error) => {
+        console.error("API Error:", error.response?.data || error.message);
+        setCardLoad(false);
       });
   }, []);
 
